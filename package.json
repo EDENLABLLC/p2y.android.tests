@@ -1,0 +1,22 @@
+{
+  "name": "Pay2You.Android.Tests",
+  "version": "1.0.0",
+  "description": "e2e appium tests for Pay2You on ECMA6",
+  "author": "Nebo #15",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha tests/*.js --env ios"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "chai-as-promised": "^5.0.0",
+    "colors": "^1.0.3",
+    "wd": "^0.3.12",
+    "q": "^2.0.2",
+    "underscore": "^1.8.3"
+  },
+  "dependencies": {
+    "mocha": "2.4.5",
+    "yargs": "4.6.0"
+  }
+}
