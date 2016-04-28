@@ -2,6 +2,8 @@
 
 open -a /Applications/Genymotion.app/Contents/MacOS/player.app --args --vm-name 'Google Nexus 4'
 
+sleep 2
+
 appium&
 
 sleep 10
