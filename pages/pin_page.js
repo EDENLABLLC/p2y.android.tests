@@ -5,7 +5,8 @@ require('../pages/phone_page.js');
 var pin_page = function () {
 
     this.fillPin = function (driver) {
-        return driver.elementById("ua.com.deltabank.pay2you:id/et_p1").should.eventually.exist.sendKeys('1')
+        return driver.sleep(5000)
+            .elementById("ua.com.deltabank.pay2you:id/et_p1").sendKeys('1')
             .elementById("ua.com.deltabank.pay2you:id/et_p2").sendKeys('2')
             .elementById("ua.com.deltabank.pay2you:id/et_p3").sendKeys('3')
             .elementById("ua.com.deltabank.pay2you:id/et_p4").sendKeys('4')
