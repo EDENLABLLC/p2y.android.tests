@@ -23,27 +23,21 @@ describe("Pay2You Android Tests", function () {
         return driver.quit();
     });
 
-    it("sign up test", function () {
-        return driver
-            // fill pin
-            .waitForElementById("ua.com.deltabank.pay2you:id/et_p1", 5000).sendKeys('1')
-            .elementById("ua.com.deltabank.pay2you:id/et_p2").sendKeys('2')
-            .elementById("ua.com.deltabank.pay2you:id/et_p3").sendKeys('3')
-            .elementById("ua.com.deltabank.pay2you:id/et_p4").sendKeys('4')
-            // confirm pin
-            .elementById("ua.com.deltabank.pay2you:id/et_p1_conf").sendKeys('1')
-            .elementById("ua.com.deltabank.pay2you:id/et_p2_conf").sendKeys('2')
-            .elementById("ua.com.deltabank.pay2you:id/et_p3_conf").sendKeys('3')
-            .elementById("ua.com.deltabank.pay2you:id/et_p4_conf").sendKeys('4')
-            // send pin
-            .elementById("ua.com.deltabank.pay2you:id/btn_ok_password").should.eventually.exist.click()
-            // assert and fill phone
-            .elementById("ua.com.deltabank.pay2you:id/et_phone_1").should.eventually.exist.sendKeys('93')
-            .elementById("ua.com.deltabank.pay2you:id/et_phone_2").sendKeys('125')
-            .elementById("ua.com.deltabank.pay2you:id/et_phone_3").sendKeys('42')
-            .elementById("ua.com.deltabank.pay2you:id/et_phone_4").sendKeys('12')
-            .elementById("ua.com.deltabank.pay2you:id/btn_ok_enterphone").should.eventually.exist.click()
-            // assert dashboard
-            .elementById("android:id/content").should.eventually.exist
+    var pin_page = require('../pages/pin_page.js');
+
+    it("signUp test", function () {
+        return pin_page.fillPin(driver)
+            .then(function () {
+                return pin_page.confirmPin(driver)
+            })
+            .then(function () {
+                return pin_page.confirmButtonClick(driver)
+            })
+            .then(function (phone_page) {
+                return phone_page.fillPhoneNumber(driver)
+            })
+            .then(function (dashboard_page) {
+                return dashboard_page.assertDashboard(driver)
+            })
     });
 });
