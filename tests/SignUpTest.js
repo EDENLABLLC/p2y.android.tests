@@ -26,12 +26,12 @@ describe("Pay2You Android Tests", function () {
     var pin_page = require('../pages/pin_page.js');
 
     it("signUp test", function () {
-        return pin_page.fillPin(driver)
+        return pin_page.fillPin(driver, '1', '2', '3', '4')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
             })
             .then(function (phone_page) {
-                return phone_page.fillPhoneNumber(driver)
+                return phone_page.fillPhoneNumber(driver, '93', '125', '42', '12')
             })
             .then(function (dashboard_page) {
                 return dashboard_page.assertDashboard(driver)
