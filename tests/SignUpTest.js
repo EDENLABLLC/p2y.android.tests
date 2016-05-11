@@ -28,9 +28,6 @@ describe("Pay2You Android Tests", function () {
     it("signUp test", function () {
         return pin_page.fillPin(driver)
             .then(function () {
-                return pin_page.confirmPin(driver)
-            })
-            .then(function () {
                 return pin_page.confirmButtonClick(driver)
             })
             .then(function (phone_page) {

@@ -10,10 +10,7 @@ var pin_page = function () {
             .elementById("ua.com.deltabank.pay2you:id/et_p2").sendKeys('2')
             .elementById("ua.com.deltabank.pay2you:id/et_p3").sendKeys('3')
             .elementById("ua.com.deltabank.pay2you:id/et_p4").sendKeys('4')
-    };
-
-    this.confirmPin = function (driver) {
-        return driver.elementById("ua.com.deltabank.pay2you:id/et_p1_conf").sendKeys('1')
+            .elementById("ua.com.deltabank.pay2you:id/et_p1_conf").sendKeys('1')
             .elementById("ua.com.deltabank.pay2you:id/et_p2_conf").sendKeys('2')
             .elementById("ua.com.deltabank.pay2you:id/et_p3_conf").sendKeys('3')
             .elementById("ua.com.deltabank.pay2you:id/et_p4_conf").sendKeys('4');
