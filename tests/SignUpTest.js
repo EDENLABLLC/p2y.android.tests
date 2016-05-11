@@ -13,7 +13,7 @@ describe("Pay2You SignUp Tests", function () {
     beforeEach(function () {
         var driverObj = require('../helpers/driver.js').init();
         driver = driverObj.driver;
-        driver = driver.sleep(20000);
+        driver = driver.sleep(15000);
 
         return driver.promise;
     });
