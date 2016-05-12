@@ -41,9 +41,6 @@ describe("Pay2You Cards Tests", function () {
             .then(function (cards_page) {
                 return cards_page.assertAndfillCard(driver, '5168', '7420', '2162', '2059', '02', '18', '771')
                     .then(function () {
-                        return cards_page.confirmFunction(driver)
-                    })
-                    .then(function () {
                         return cards_page.fillUserCardAndPay(driver, '5168', '7420', '2162', '2059', '1')
                     })
             })
