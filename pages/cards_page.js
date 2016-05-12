@@ -1,5 +1,7 @@
 "use strict";
 
+require('../pages/pay_page.js');
+
 var cards_page = function () {
 
     this.assertAndfillCard = function (driver, val1, val2, val3, val4, MM, YY, CVV) {
@@ -12,6 +14,19 @@ var cards_page = function () {
             .elementById("ua.com.deltabank.pay2you:id/et_validYear").sendKeys(YY)
             .elementById("ua.com.deltabank.pay2you:id/et_cvc2").sendKeys(CVV)
             .elementById("ua.com.deltabank.pay2you:id/transfer_layout_btn_select_receiver").click()
+    };
+
+    this.fillUserCardAndPay = function (driver, value1, value2, value3, value4, amount) {
+        return driver.elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_1").sendKeys(value1)
+            .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_2").sendKeys(value2)
+            .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_3").sendKeys(value3)
+            .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_4").sendKeys(value4)
+            .elementById("ua.com.deltabank.pay2you:id/btn_enter_money").click()
+            .elementById("ua.com.deltabank.pay2you:id/transfer_layout_et_money").sendKeys(amount)
+            .elementById("ua.com.deltabank.pay2you:id/btn_PrepareTransfer").click()
+            .then(function () {
+                return require('./pay_page.js');
+            });
     };
 };
 
