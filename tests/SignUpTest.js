@@ -13,14 +13,16 @@ describe("Pay2You SignUp Tests", function () {
     beforeEach(function () {
         var driverObj = require('../helpers/driver.js').init();
         driver = driverObj.driver;
-        driver = driver.sleep(15000);
+        driver = driver.sleep(5000);
 
         return driver.promise;
     });
 
     afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
-        return driver.quit();
+        return driver
+        .resetApp()
+        .quit();
     });
 
     var pin_page = require('../pages/pin_page.js');

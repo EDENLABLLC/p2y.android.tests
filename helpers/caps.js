@@ -26,8 +26,7 @@ exports.android = {
     autoAcceptAlert: true,
     waitForAppScript: true,
     launchTimeout: 999999,
-    fullReset: true,
     appPackage: apps.androidActivity,
-    appWaitPackage: apps.androidActivity,
+    appWaitActivity: apps.androidPageActivity,
     app: apps.android
 };
