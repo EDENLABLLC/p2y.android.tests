@@ -21,14 +21,14 @@ describe("Pay2You SignUp Tests", function () {
     afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver
-        .resetApp()
-        .quit();
+            .resetApp()
+            .quit();
     });
 
     var pin_page = require('../pages/pin_page.js');
 
     it("signUp test", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4','1', '2', '3', '4')
+        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '2', '3', '4')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
             })
@@ -41,25 +41,25 @@ describe("Pay2You SignUp Tests", function () {
     });
 
     it("signUp test bad pin", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4','1', '1', '1', '1')
+        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '1', '1', '1')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
-            })
-            .then(function () {
-                return pin_page.pinPageAssert(driver)
+                    .then(function () {
+                        return pin_page.pinPageAssert(driver)
+                    })
             })
     });
 
     it("signUp test without therms", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4','1', '2', '3', '4')
+        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '2', '3', '4')
             .then(function () {
                 return pin_page.thermsButtonClick(driver)
-            })
-            .then(function () {
-                return pin_page.confirmButtonClick(driver)
-            })
-            .then(function () {
-                return pin_page.pinPageAssert(driver)
+                    .then(function () {
+                        return pin_page.confirmButtonClick(driver)
+                    })
+                    .then(function () {
+                        return pin_page.pinPageAssert(driver)
+                    })
             })
     });
 });

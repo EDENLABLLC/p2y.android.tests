@@ -13,7 +13,11 @@ var cards_page = function () {
             .elementById("ua.com.deltabank.pay2you:id/et_validMonth").sendKeys(MM)
             .elementById("ua.com.deltabank.pay2you:id/et_validYear").sendKeys(YY)
             .elementById("ua.com.deltabank.pay2you:id/et_cvc2").sendKeys(CVV)
-            .elementById("ua.com.deltabank.pay2you:id/transfer_layout_btn_select_receiver").click()
+    };
+
+    this.confirmFunction = function (driver) {
+        return driver
+            .elementById("ua.com.deltabank.pay2you:id/transfer_layout_btn_select_receiver").should.eventually.exist.click()
     };
 
     this.fillUserCardAndPay = function (driver, value1, value2, value3, value4, amount) {
