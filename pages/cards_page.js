@@ -17,7 +17,7 @@ var cards_page = function () {
     };
 
     this.fillUserCardAndPay = function (driver, value1, value2, value3, value4, amount) {
-        return driver.elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_1").sendKeys(value1)
+        return driver.elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_1").should.eventually.exist.sendKeys(value1)
             .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_2").sendKeys(value2)
             .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_3").sendKeys(value3)
             .elementById("ua.com.deltabank.pay2you:id/et_cardnumber_rec_4").sendKeys(value4)
