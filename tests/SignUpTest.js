@@ -56,6 +56,9 @@ describe("Pay2You SignUp Tests", function () {
                 return pin_page.thermsButtonClick(driver)
                     .then(function () {
                         return pin_page.confirmButtonClick(driver)
+                            .then(function () {
+                                return pin_page.pinPageAssert(driver)
+                            })
                     })
             })
     });
