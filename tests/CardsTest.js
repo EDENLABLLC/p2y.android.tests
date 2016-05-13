@@ -27,9 +27,10 @@ describe("Pay2You Cards Tests", function () {
     });
 
     var pin_page = require('../pages/pin_page.js');
-    var card = fixtures.cards[1];
 
     it("PayFromCard test", function () {
+        var card = fixtures.cards[1];
+
         return pin_page.fillPin(driver, '1111', '1111')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
