@@ -26,6 +26,14 @@ module.exports.cards = [
         }
     },
     {
+        "number": 4211432245444431,
+        "cvv": 100,
+        "expired": {
+            "month": "02",
+            "year": "20"
+        }
+    },
+    {
         "number": 5513877294352240,
         "cvv": 160,
         "expired": {

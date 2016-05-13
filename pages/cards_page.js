@@ -22,6 +22,10 @@ var cards_page = function () {
                 return require('./pay_page.js');
             });
     };
+
+    this.assertAlertMessage = function (driver) {
+        return driver.elementById("android:id/message").text()
+    };
 };
 
 module.exports = new cards_page();
