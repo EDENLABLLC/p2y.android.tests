@@ -6,7 +6,7 @@ var wd = require("wd"),
 require('../helpers/setup.js');
 var fixtures = require('../fixtures');
 
-describe("Pay2You Cards2Card Tests", function () {
+describe("Pay2You Cards2Phone Tests", function () {
     this.timeout(300000);
     var driver;
     var allPassed = true;
@@ -26,7 +26,7 @@ describe("Pay2You Cards2Card Tests", function () {
 
     var pin_page = require('../pages/pin_page.js');
 
-    it("Card2Card positive", function () {
+    it("Card2Phone positive", function () {
         var card = fixtures.cards[2];
 
         return pin_page.fillPin(driver, '1111', '1111')
@@ -44,36 +44,11 @@ describe("Pay2You Cards2Card Tests", function () {
                     .then(function (cards_page) {
                         return cards_page.fillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
                             .then(function () {
-                                return cards_page.fillUserCardAndPay(driver, card.number, '1')
+                                return cards_page.fillUserPhoneAndPay(driver, '931254212', '1')
                             })
                     })
                     .then(function (pay_page) {
                         return pay_page.payButton(driver)
-                    })
-            });
-    });
-
-    it("Card2Card bad card number", function () {
-        var card = fixtures.cards[3];
-
-        return pin_page.fillPin(driver, '1111', '1111')
-            .then(function () {
-                return pin_page.confirmButtonClick(driver)
-            })
-            .then(function (phone_page) {
-                return phone_page.fillPhoneNumber(driver, '931254212')
-            })
-            .then(function (dashboard_page) {
-                return dashboard_page.assertDashboard(driver)
-                    .then(function () {
-                        return dashboard_page.transferCard(driver)
-                    })
-                    .then(function (cards_page) {
-                        return cards_page.fillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
-                            .then(function () {
-                                return cards_page.assertAlertMessage(driver)
-                                    .should.become('For money transfer enter your card number, please (16 digits)')
-                            })
                     })
             });
     });
