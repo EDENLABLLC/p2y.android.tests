@@ -5,7 +5,7 @@ require('../pages/pay_page.js');
 var cards_page = function () {
 
     this.fillCard = function (driver, number, month, year, cvv) {
-        return driver.sleep(2000).elementById("ua.com.deltabank.pay2you:id/ll_pager").should.eventually.exist
+        return driver.waitForElementById("ua.com.deltabank.pay2you:id/ll_pager", 2000)
             .elementById("ua.com.deltabank.pay2you:id/et_numbercard1").sendKeys(number)
             .elementById("ua.com.deltabank.pay2you:id/et_validMonth").sendKeys(month)
             .elementById("ua.com.deltabank.pay2you:id/et_validYear").sendKeys(year)

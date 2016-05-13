@@ -26,7 +26,7 @@ describe("Pay2You Cards2Card Tests", function () {
 
     var pin_page = require('../pages/pin_page.js');
 
-    it("Card2Card test", function () {
+    it("Card2Card positive", function () {
         var card = fixtures.cards[2];
 
         return pin_page.fillPin(driver, '1111', '1111')
@@ -48,11 +48,11 @@ describe("Pay2You Cards2Card Tests", function () {
                             })
                     })
                     .then(function (pay_page) {
-                        return pay_page.assertPay(driver)
+                        return pay_page.payButton(driver)
                     })
             });
     });
-    it("Card2Card bad card number test", function () {
+    it("Card2Card bad card number", function () {
         var card = fixtures.cards[3];
 
         return pin_page.fillPin(driver, '1111', '1111')

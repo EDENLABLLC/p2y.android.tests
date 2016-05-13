@@ -25,7 +25,7 @@ describe("Pay2You SignUp Tests", function () {
 
     var pin_page = require('../pages/pin_page.js');
 
-    it("signUp test", function () {
+    it("signUp", function () {
         return pin_page.fillPin(driver, '1234', '1234')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
@@ -38,7 +38,7 @@ describe("Pay2You SignUp Tests", function () {
             })
     });
 
-    it("signUp test bad pin", function () {
+    it("signUp bad pin", function () {
         return pin_page.fillPin(driver, '1234', '1111')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
@@ -48,7 +48,7 @@ describe("Pay2You SignUp Tests", function () {
             })
     });
 
-    it("signUp test without therms", function () {
+    it("signUp without therms", function () {
         return pin_page.fillPin(driver, '2222', '2222')
             .then(function () {
                 return pin_page.thermsButtonClick(driver)
