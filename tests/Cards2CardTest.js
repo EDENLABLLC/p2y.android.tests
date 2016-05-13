@@ -26,7 +26,7 @@ describe("Pay2You Cards2Card Tests", function () {
 
     var pin_page = require('../pages/pin_page.js');
 
-    xit("Card2Card test", function () {
+    it("Card2Card test", function () {
         var card = fixtures.cards[2];
 
         return pin_page.fillPin(driver, '1111', '1111')
