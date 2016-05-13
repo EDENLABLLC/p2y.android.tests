@@ -4,6 +4,7 @@ var wd = require("wd"),
     _ = require('underscore');
 
 require('../helpers/setup.js');
+var fixtures = require('../fixtures');
 
 describe("Pay2You Cards Tests", function () {
     this.timeout(300000);
@@ -26,26 +27,30 @@ describe("Pay2You Cards Tests", function () {
     });
 
     var pin_page = require('../pages/pin_page.js');
+    var card = fixtures.cards[1];
 
     it("PayFromCard test", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '2', '3', '4')
+        return pin_page.fillPin(driver, '1111', '1111')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
             })
             .then(function (phone_page) {
-                return phone_page.fillPhoneNumber(driver, '93', '125', '42', '12')
+                return phone_page.fillPhoneNumber(driver, '931254212')
             })
             .then(function (dashboard_page) {
-                return dashboard_page.transferCard(driver)
-            })
-            .then(function (cards_page) {
-                return cards_page.assertAndfillCard(driver, '5168', '7420', '2162', '2059', '02', '18', '771')
+                return dashboard_page.assertDashboard(driver)
                     .then(function () {
-                        return cards_page.fillUserCardAndPay(driver, '5168', '7420', '2162', '2059', '1')
+                        return dashboard_page.transferCard(driver)
                     })
-            })
-            .then(function (pay_page) {
-                return pay_page.assertPay(driver)
-            })
+                    .then(function (cards_page) {
+                        return cards_page.assertAndfillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
+                            .then(function () {
+                                return cards_page.fillUserCardAndPay(driver, card.number, '1')
+                            })
+                    })
+                    .then(function (pay_page) {
+                        return pay_page.assertPay(driver)
+                    })
+            });
     });
 });

@@ -28,12 +28,12 @@ describe("Pay2You SignUp Tests", function () {
     var pin_page = require('../pages/pin_page.js');
 
     it("signUp test", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '2', '3', '4')
+        return pin_page.fillPin(driver, '1234', '1234')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
             })
             .then(function (phone_page) {
-                return phone_page.fillPhoneNumber(driver, '93', '125', '42', '12')
+                return phone_page.fillPhoneNumber(driver, '931254212')
             })
             .then(function (dashboard_page) {
                 return dashboard_page.assertDashboard(driver)
@@ -41,7 +41,7 @@ describe("Pay2You SignUp Tests", function () {
     });
 
     it("signUp test bad pin", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '1', '1', '1')
+        return pin_page.fillPin(driver, '1234', '1111')
             .then(function () {
                 return pin_page.confirmButtonClick(driver)
                     .then(function () {
@@ -51,7 +51,7 @@ describe("Pay2You SignUp Tests", function () {
     });
 
     it("signUp test without therms", function () {
-        return pin_page.fillPin(driver, '1', '2', '3', '4', '1', '2', '3', '4')
+        return pin_page.fillPin(driver, '2222', '2222')
             .then(function () {
                 return pin_page.thermsButtonClick(driver)
                     .then(function () {
