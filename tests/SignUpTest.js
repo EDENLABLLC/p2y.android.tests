@@ -20,9 +20,7 @@ describe("Pay2You SignUp Tests", function () {
 
     afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
-        return driver
-            .resetApp()
-            .quit();
+        return driver.closeApp().quit();
     });
 
     var pin_page = require('../pages/pin_page.js');

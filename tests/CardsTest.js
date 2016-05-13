@@ -21,15 +21,13 @@ describe("Pay2You Cards Tests", function () {
 
     afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
-        return driver
-            .resetApp()
-            .quit();
+        return driver.closeApp().quit();
     });
 
     var pin_page = require('../pages/pin_page.js');
 
     it("PayFromCard test", function () {
-        var card = fixtures.cards[1];
+        var card = fixtures.cards[2];
 
         return pin_page.fillPin(driver, '1111', '1111')
             .then(function () {
@@ -44,7 +42,7 @@ describe("Pay2You Cards Tests", function () {
                         return dashboard_page.transferCard(driver)
                     })
                     .then(function (cards_page) {
-                        return cards_page.assertAndfillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
+                        return cards_page.fillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
                             .then(function () {
                                 return cards_page.fillUserCardAndPay(driver, card.number, '1')
                             })
