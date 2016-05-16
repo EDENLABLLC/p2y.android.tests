@@ -34,8 +34,9 @@ var cards_page = function () {
             });
     };
 
-    this.assertAlertMessage = function (driver) {
+    this.assertAlertMessage = function (driver, text) {
         return driver.elementById("android:id/message").text()
+            .should.become(text)
     };
 };
 

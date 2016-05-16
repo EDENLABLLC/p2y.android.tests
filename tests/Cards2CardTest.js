@@ -26,7 +26,7 @@ describe("Pay2You Cards2Card Tests", function () {
 
     var pin_page = require('../pages/pin_page.js');
 
-    it("Card2Card positive", function () {
+    xit("Card2Card positive", function () {
         var card = fixtures.cards[2];
 
         return pin_page.fillPin(driver, '1111', '1111')
@@ -71,8 +71,7 @@ describe("Pay2You Cards2Card Tests", function () {
                     .then(function (cards_page) {
                         return cards_page.fillCard(driver, card.number, card.expired.month, card.expired.year, card.cvv)
                             .then(function () {
-                                return cards_page.assertAlertMessage(driver)
-                                    .should.become('For money transfer enter your card number, please (16 digits)')
+                                return cards_page.assertAlertMessage(driver, 'For money transfer enter your card number, please (16 digits)')
                             })
                     })
             });
