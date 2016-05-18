@@ -76,4 +76,52 @@ describe("Pay2You Cards2Card Tests", function () {
                     })
             });
     });
+
+    it("Card2Card empty cvv", function () {
+        var card = fixtures.cards[1];
+
+        return pin_page.fillPin(driver, '1111', '1111')
+            .then(function () {
+                return pin_page.confirmButtonClick(driver)
+            })
+            .then(function (phone_page) {
+                return phone_page.fillPhoneNumber(driver, '931254212')
+            })
+            .then(function (dashboard_page) {
+                return dashboard_page.assertDashboard(driver)
+                    .then(function () {
+                        return dashboard_page.transferCard(driver)
+                    })
+                    .then(function (cards_page) {
+                        return cards_page.fillCard(driver, card.number, card.expired.month, card.expired.year, 'sss')
+                            .then(function () {
+                                return cards_page.assertAlertMessage(driver, 'Please, enter cvc2 (3 digits)')
+                            })
+                    })
+            });
+    });
+
+    it("Card2Card bad card expired", function () {
+        var card = fixtures.cards[1];
+
+        return pin_page.fillPin(driver, '1111', '1111')
+            .then(function () {
+                return pin_page.confirmButtonClick(driver)
+            })
+            .then(function (phone_page) {
+                return phone_page.fillPhoneNumber(driver, '931254212')
+            })
+            .then(function (dashboard_page) {
+                return dashboard_page.assertDashboard(driver)
+                    .then(function () {
+                        return dashboard_page.transferCard(driver)
+                    })
+                    .then(function (cards_page) {
+                        return cards_page.fillCard(driver, card.number, '0', '0', card.cvv)
+                            .then(function () {
+                                return cards_page.assertAlertMessage(driver, 'Wait some Message TODO')
+                            })
+                    })
+            });
+    });
 });
