@@ -1,5 +1,7 @@
 "use strict";
 
+require('../pages/facebook_page.js');
+
 var wd = require('wd');
 
 var receive_page = function () {
