@@ -29,6 +29,15 @@ var receive_page = function () {
             .sleep(5000)
     };
 
+    this.receiveFacebook = function (driver) {
+        return driver.elementById("ua.com.deltabank.pay2you:id/receive_layout_choose1_other").click()
+            .elementById("ua.com.deltabank.pay2you:id/btn_select_transfers_facebook").should.eventually.exist.click()
+            .elementById("ua.com.deltabank.pay2you:id/authButton").should.eventually.exist.click()
+            .then(function () {
+                return require('./facebook_page.js');
+            });
+    };
+
     this.assertAlertMessage = function (driver, text) {
         return driver.elementById("android:id/message").text()
             .should.become(text)

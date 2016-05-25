@@ -1,5 +1,6 @@
 "use strict";
 
+require('../pages/facebook_page.js');
 require('../pages/pay_page.js');
 
 var cards_page = function () {
@@ -23,6 +24,20 @@ var cards_page = function () {
             });
     };
 
+    this.assertReceiveList = function (driver, text) {
+        return driver.waitForElementById("ua.com.deltabank.pay2you:id/empty_list_transfers").text()
+            .should.become(text)
+    };
+
+    this.goToFacebook = function (driver) {
+        return driver.elementById("ua.com.deltabank.pay2you:id/transfer_layout_other_transfer_select_1").click()
+            .elementById("ua.com.deltabank.pay2you:id/btn_selectfriendfacebook").should.eventually.exist.click()
+            .elementById("ua.com.deltabank.pay2you:id/authButton").should.eventually.exist.click()
+            .then(function () {
+                return require('./facebook_page.js');
+            });
+    };
+
     this.fillUserPhoneAndPay = function (driver, phone, amount) {
         return driver.elementById("ua.com.deltabank.pay2you:id/transfer_layout_phone_transfer_select_1").click()
             .elementById("ua.com.deltabank.pay2you:id/et_phone_1").sendKeys(phone)
@@ -37,6 +52,15 @@ var cards_page = function () {
     this.assertAlertMessage = function (driver, text) {
         return driver.elementById("android:id/message").text()
             .should.become(text)
+    };
+
+    this.assertFriendsAndPay = function (driver, amount) {
+        return driver.waitForElementById("ua.com.deltabank.pay2you:id/btn_enter_money").should.eventually.exist.click()
+            .elementById("ua.com.deltabank.pay2you:id/transfer_layout_et_money").sendKeys(amount)
+            .elementById("ua.com.deltabank.pay2you:id/btn_PrepareTransfer").click()
+            .then(function () {
+                return require('./pay_page.js');
+            });
     };
 };
 
