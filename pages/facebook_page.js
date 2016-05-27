@@ -1,6 +1,6 @@
 "use strict";
 
-require('../pages/cards_page.js');
+require('./cards_page.js');
 
 var facebook_page = function () {
 

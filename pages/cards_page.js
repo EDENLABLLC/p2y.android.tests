@@ -1,7 +1,7 @@
 "use strict";
 
-require('../pages/facebook_page.js');
-require('../pages/pay_page.js');
+require('./facebook_page.js');
+require('./pay_page.js');
 
 var cards_page = function () {
 

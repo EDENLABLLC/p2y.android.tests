@@ -1,6 +1,6 @@
 "use strict";
 
-require('../pages/phone_page.js');
+require('./phone_page.js');
 
 var pin_page = function () {
 
