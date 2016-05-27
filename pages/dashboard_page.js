@@ -1,7 +1,7 @@
 "use strict";
 
-require('./cards_page.js');
-require('./receive_page.js');
+require('../pages/cards_page.js');
+require('../pages/receive_page.js');
 
 var dashboard_page = function () {
 

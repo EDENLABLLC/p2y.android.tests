@@ -1,6 +1,6 @@
 "use strict";
 
-require('./dashboard_page.js');
+require('../pages/dashboard_page.js');
 
 var phone_page = function () {
 

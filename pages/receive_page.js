@@ -1,6 +1,6 @@
 "use strict";
 
-require('./facebook_page.js');
+require('../pages/facebook_page.js');
 
 var wd = require('wd');
 
