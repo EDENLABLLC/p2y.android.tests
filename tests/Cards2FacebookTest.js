@@ -48,7 +48,7 @@ describe("Pay2You Cards2Facebook Tests", function () {
                             })
                     })
                     .then(function (facebook_page) {
-                        return facebook_page.fillFacebookForm(driver, 'furman16@yandex.ru', 'conviction2008')
+                        return facebook_page.fillFacebookForm(driver, 'furman16@yandex.ru', 'dgfdsgsdfg')
                             .then(function () {
                                 return facebook_page.assertAndChooseFriend(driver)
                             })
